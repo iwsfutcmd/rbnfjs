@@ -1,0 +1,79 @@
+/* @counter-style khmer-nodot {
+    system: extends khmer;
+    suffix: "";
+} */
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#square {
+    display: grid;
+    grid: repeat(3, 36px) / repeat(3, 36px);
+    margin-block-start: 64px; 
+    animation: cw-rotation 8s infinite linear;
+    background-color: red;
+}
+
+.cell {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    animation: ccw-rotation 8s infinite linear;
+    
+}
+
+@keyframes cw-rotation {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes ccw-rotation {
+    from {
+        transform: rotateZ(360deg);
+    }
+    to {
+        transform: rotateZ(0deg);
+    }
+}
+
+/* #c1::after {
+    content: "1";
+}
+
+#c2::after {
+    content: "2";
+}
+
+#c3::after {
+    content: "3";
+}
+
+#c4::after {
+    content: "4";
+}
+
+#c5::after {
+    content: "5";
+}
+
+#c6::after {
+    content: "6";
+}
+
+#c7::after {
+    content: "7";
+}
+
+#c8::after {
+    content: "8";
+}
+
+#c9::after {
+    content: "9";
+} */
