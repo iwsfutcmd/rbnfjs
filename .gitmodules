@@ -1,0 +1,9 @@
+[submodule "cldr/cldr-rbnf"]
+	path = cldr/cldr-rbnf
+	url = https://github.com/iwsfutcmd/cldr-rbnf.git
+[submodule "cldr/cldr-core"]
+	path = cldr/cldr-core
+	url = https://github.com/unicode-cldr/cldr-core.git
+[submodule "cldr/cldr-numbers-full"]
+	path = cldr/cldr-numbers-full
+	url = https://github.com/unicode-cldr/cldr-numbers-full.git
