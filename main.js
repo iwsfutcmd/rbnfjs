@@ -1,24 +1,12 @@
-let cldr_files = [
+let cldrFiles = [
     "cldr/cldr-core/supplemental/likelySubtags.json",
-    "cldr/cldr-numbers-full/main/en/numbers.json",
-    "cldr/cldr-numbers-full/main/ar/numbers.json",
-    "cldr/cldr-numbers-full/main/fr/numbers.json",
-    "cldr/cldr-numbers-full/main/ak/numbers.json",
-    "cldr/cldr-numbers-full/main/ar-MA/numbers.json",
-    "cldr/cldr-numbers-full/main/ru/numbers.json",
-    "cldr/cldr-numbers-full/main/th/numbers.json",
     "cldr/cldr-core/supplemental/numberingSystems.json",
     "cldr/cldr-core/supplemental/plurals.json",
     "cldr/cldr-core/supplemental/ordinals.json",
-    "cldr/cldr-rbnf/rbnf/en.json",
-    "cldr/cldr-rbnf/rbnf/ar.json",
-    "cldr/cldr-rbnf/rbnf/fr.json",
-    "cldr/cldr-rbnf/rbnf/ak.json",
-    "cldr/cldr-rbnf/rbnf/ru.json",
     "cldr/cldr-rbnf/rbnf/root.json",
-]
+];
 
-cldr_files.forEach(f => {
+cldrFiles.forEach(f => {
     fetch(f).then(r => r.json()).then(r => Globalize.load(r))
 })
 
@@ -35,3 +23,24 @@ p.then(() => {
     }
         
 })
+
+show = (n, locale) => {
+    let output = format(Number(n), locale, "%spellout-numbering-year", "SpelloutRules");
+    document.getElementById("output").innerHTML = output;
+}
+
+let loadedLocales = new Set();
+parseNum = n => {
+    let locale = document.getElementById("locale").value;
+    if (!loadedLocales.has(locale)) {
+        rbnf = fetch("cldr/cldr-rbnf/rbnf/" + locale + ".json").then(f => f.json()).then(j => Globalize.load(j))
+        num = fetch("cldr/cldr-numbers-full/main/" + locale + "/numbers.json").then(f => f.json()).then(j => Globalize.load(j))
+        Promise.all([rbnf.num]).then(() => {
+            show(n, locale);
+            loadedLocales.add(locale);    
+        })
+    } else {
+        show(n, locale);
+    }
+    
+}

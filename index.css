@@ -8,12 +8,28 @@ body {
     justify-content: center;
 }
 
+input {
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+}
+
+#output {
+    text-align: center;
+    font-size: x-large;
+}
+
 #square {
     display: grid;
     grid: repeat(3, 36px) / repeat(3, 36px);
     margin-block-start: 64px; 
     animation: cw-rotation 8s infinite linear;
     background-color: red;
+    inline-size: calc(3 * 36px);
+    block-size: calc(3 * 36px);
 }
 
 .cell {

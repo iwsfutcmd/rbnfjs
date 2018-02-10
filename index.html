@@ -7,7 +7,12 @@
 
     </head>
     <body>
-        <div id="square">
+        <div id="container">
+            <input id="num" oninput="parseNum(this.value);"/>
+            <input id="locale"/>
+            <div id="output"></div>
+        </div>
+        <!-- <div id="square">
             <div id="c4" class="cell"></div>
             <div id="c9" class="cell"></div>
             <div id="c2" class="cell"></div>
@@ -17,7 +22,7 @@
             <div id="c8" class="cell"></div>
             <div id="c1" class="cell"></div>
             <div id="c6" class="cell"></div>
-        </div>
+        </div> -->
         <script src="node_modules/cldrjs/dist/cldr.js"></script>
         <script src="node_modules/cldrjs/dist/cldr/event.js"></script>
         <script src="node_modules/cldrjs/dist/cldr/supplemental.js"></script>
